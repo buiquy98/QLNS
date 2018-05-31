@@ -26,7 +26,7 @@ GO
 USE [QLNS]
 GO
 
-/****** Object:  Table [dbo].[tblPHIEUNHAP]    Script Date: 05/29/18 10:34:34 PM ******/
+/****** Object:  Table [dbo].[tblPHIEUNHAP]    Script Date: 31/05/2018 4:42:00 CH ******/
 SET ANSI_NULLS ON
 GO
 
@@ -43,19 +43,14 @@ CREATE TABLE [dbo].[tblPHIEUNHAP](
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[tblPHIEUNHAP]  WITH CHECK ADD  CONSTRAINT [FK_tblPHIEUNHAP_tblPHIEUNHAP1] FOREIGN KEY([maphieunhap])
-REFERENCES [dbo].[tblPHIEUNHAP] ([maphieunhap])
-GO
 
-ALTER TABLE [dbo].[tblPHIEUNHAP] CHECK CONSTRAINT [FK_tblPHIEUNHAP_tblPHIEUNHAP1]
-GO
 
 
 --tạo bảng tblChiTietPhieuNhap
 USE [QLNS]
 GO
 
-/****** Object:  Table [dbo].[tblCHITIETPHIEUNHAP]    Script Date: 05/29/18 10:35:17 PM ******/
+/****** Object:  Table [dbo].[tblCHITIETPHIEUNHAP]    Script Date: 31/05/2018 4:42:22 CH ******/
 SET ANSI_NULLS ON
 GO
 
@@ -66,7 +61,7 @@ CREATE TABLE [dbo].[tblCHITIETPHIEUNHAP](
 	[machitietphieunhap] [int] NOT NULL,
 	[maphieunhap] [int] NOT NULL,
 	[soluongnhap] [int] NULL,
-	[masach] [int] NULL,
+	[masach] [int] NOT NULL,
  CONSTRAINT [PK_tblCHITIETPHIEUNHAP] PRIMARY KEY CLUSTERED 
 (
 	[machitietphieunhap] ASC
@@ -89,11 +84,13 @@ ALTER TABLE [dbo].[tblCHITIETPHIEUNHAP] CHECK CONSTRAINT [FK_tblCHITIETPHIEUNHAP
 GO
 
 
+
+
 --tạo bảng tblSach
 USE [QLNS]
 GO
 
-/****** Object:  Table [dbo].[tblSACH]    Script Date: 05/29/18 10:35:57 PM ******/
+/****** Object:  Table [dbo].[tblSACH]    Script Date: 31/05/2018 4:42:37 CH ******/
 SET ANSI_NULLS ON
 GO
 
@@ -115,11 +112,15 @@ CREATE TABLE [dbo].[tblSACH](
 GO
 
 
+
+
+
 --tạo bảng tblChiTietPhieuHoaDon
+
 USE [QLNS]
 GO
 
-/****** Object:  Table [dbo].[tblCHITIETPHIEUHOADON]    Script Date: 05/29/18 10:36:28 PM ******/
+/****** Object:  Table [dbo].[tblCHITIETPHIEUHOADON]    Script Date: 31/05/2018 4:42:49 CH ******/
 SET ANSI_NULLS ON
 GO
 
@@ -128,9 +129,9 @@ GO
 
 CREATE TABLE [dbo].[tblCHITIETPHIEUHOADON](
 	[machitietphieuhoadon] [int] NOT NULL,
-	[maphieuhoadon] [int] NULL,
+	[maphieuhoadon] [int] NOT NULL,
 	[soluongban] [int] NULL,
-	[masach] [int] NULL,
+	[masach] [int] NOT NULL,
  CONSTRAINT [PK_tblCHITIETPHIEUHOADON] PRIMARY KEY CLUSTERED 
 (
 	[machitietphieuhoadon] ASC
@@ -153,11 +154,13 @@ ALTER TABLE [dbo].[tblCHITIETPHIEUHOADON] CHECK CONSTRAINT [FK_tblCHITIETPHIEUHO
 GO
 
 
+
+
 --tạo bảng tblPhieuThuTien
 USE [QLNS]
 GO
 
-/****** Object:  Table [dbo].[tblPHIEUTHUTIEN]    Script Date: 05/29/18 10:37:00 PM ******/
+/****** Object:  Table [dbo].[tblPHIEUTHUTIEN]    Script Date: 31/05/2018 4:43:03 CH ******/
 SET ANSI_NULLS ON
 GO
 
@@ -175,12 +178,24 @@ CREATE TABLE [dbo].[tblPHIEUTHUTIEN](
 ) ON [PRIMARY]
 GO
 
+ALTER TABLE [dbo].[tblPHIEUTHUTIEN]  WITH CHECK ADD  CONSTRAINT [FK_tblPHIEUTHUTIEN_tblKHACHHANG] FOREIGN KEY([makhachhang])
+REFERENCES [dbo].[tblKHACHHANG] ([makhachhang])
+GO
+
+ALTER TABLE [dbo].[tblPHIEUTHUTIEN] CHECK CONSTRAINT [FK_tblPHIEUTHUTIEN_tblKHACHHANG]
+GO
+
+
+
+
+
 
 --tạo bảng tblPhieuHoaDon
+
 USE [QLNS]
 GO
 
-/****** Object:  Table [dbo].[tblPHIEUHOADON]    Script Date: 05/29/18 10:37:41 PM ******/
+/****** Object:  Table [dbo].[tblPHIEUHOADON]    Script Date: 31/05/2018 4:43:19 CH ******/
 SET ANSI_NULLS ON
 GO
 
@@ -206,11 +221,13 @@ ALTER TABLE [dbo].[tblPHIEUHOADON] CHECK CONSTRAINT [FK_tblPHIEUHOADON_tblKHACHH
 GO
 
 
+
 --tạo bảng tblKhachHang
+
 USE [QLNS]
 GO
 
-/****** Object:  Table [dbo].[tblKHACHHANG]    Script Date: 05/29/18 10:37:59 PM ******/
+/****** Object:  Table [dbo].[tblKHACHHANG]    Script Date: 31/05/2018 4:43:30 CH ******/
 SET ANSI_NULLS ON
 GO
 
@@ -231,33 +248,22 @@ CREATE TABLE [dbo].[tblKHACHHANG](
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[tblKHACHHANG]  WITH CHECK ADD  CONSTRAINT [FK_tblKHACHHANG_tblKHACHHANG] FOREIGN KEY([makhachhang])
-REFERENCES [dbo].[tblKHACHHANG] ([makhachhang])
-GO
 
-ALTER TABLE [dbo].[tblKHACHHANG] CHECK CONSTRAINT [FK_tblKHACHHANG_tblKHACHHANG]
-GO
-
-ALTER TABLE [dbo].[tblKHACHHANG]  WITH CHECK ADD  CONSTRAINT [FK_tblKHACHHANG_tblKHACHHANG1] FOREIGN KEY([makhachhang])
-REFERENCES [dbo].[tblKHACHHANG] ([makhachhang])
-GO
-
-ALTER TABLE [dbo].[tblKHACHHANG] CHECK CONSTRAINT [FK_tblKHACHHANG_tblKHACHHANG1]
-GO
 
 
 --tạo bảng tblBaoCaoCongNo
+
 USE [QLNS]
 GO
 
-/****** Object:  Table [dbo].[tblBAOCAONOCONG]    Script Date: 05/29/18 10:38:22 PM ******/
+/****** Object:  Table [dbo].[tblBAOCAOCONGNO]    Script Date: 31/05/2018 4:43:46 CH ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[tblBAOCAONOCONG](
+CREATE TABLE [dbo].[tblBAOCAOCONGNO](
 	[machitietcongno] [int] NOT NULL,
 	[thang] [datetime2](7) NULL,
 	[makhachhang] [int] NOT NULL,
@@ -271,19 +277,15 @@ CREATE TABLE [dbo].[tblBAOCAONOCONG](
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[tblBAOCAONOCONG]  WITH CHECK ADD  CONSTRAINT [FK_tblBAOCAONOCONG_tblKHACHHANG] FOREIGN KEY([makhachhang])
-REFERENCES [dbo].[tblKHACHHANG] ([makhachhang])
-GO
 
-ALTER TABLE [dbo].[tblBAOCAONOCONG] CHECK CONSTRAINT [FK_tblBAOCAONOCONG_tblKHACHHANG]
-GO
 
 
 --tbl tạo bảng tblBaoCaoTon
+
 USE [QLNS]
 GO
 
-/****** Object:  Table [dbo].[tblBAOCAOTON]    Script Date: 05/29/18 10:39:04 PM ******/
+/****** Object:  Table [dbo].[tblBAOCAOTON]    Script Date: 31/05/2018 4:44:00 CH ******/
 SET ANSI_NULLS ON
 GO
 
@@ -312,11 +314,12 @@ ALTER TABLE [dbo].[tblBAOCAOTON] CHECK CONSTRAINT [FK_tblBAOCAOTON_tblSACH]
 GO
 
 
+
 --tạo bảng tblThamSo
 USE [QLNS]
 GO
 
-/****** Object:  Table [dbo].[tblTHAMSO]    Script Date: 05/29/18 10:39:32 PM ******/
+/****** Object:  Table [dbo].[tblTHAMSO]    Script Date: 31/05/2018 4:44:13 CH ******/
 SET ANSI_NULLS ON
 GO
 
@@ -331,5 +334,7 @@ CREATE TABLE [dbo].[tblTHAMSO](
 	[sudungquydinh4] [bit] NULL
 ) ON [PRIMARY]
 GO
+
+
 
 
